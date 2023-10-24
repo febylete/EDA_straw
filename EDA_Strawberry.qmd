@@ -1,0 +1,695 @@
+---
+title: "Exploratory Data Analysis: Strawberry"
+author: "Febriany Lete"
+format: html
+editor: visual
+---
+
+![](images/ALR-strawberry-fruit-or-vegetable-f6dd901427714e46af2d706a57b9016f.jpg) \-\--
+
+#### **1. Introduction**
+
+In the United States, strawberries are a famous and well-liked fruit that are appreciated for their sweet and sour flavor, brilliant red color, and adaptability in a variety of culinary applications. Strawberries are a common food in American diets, whether they are consumed raw, in jams, or as a component of sweets. The use of pesticides in strawberry production is a complicated problem that has recently received more attention than the exquisite attractiveness of this fruit.
+
+Chemicals known as pesticides are used in agriculture to eradicate weeds, illnesses, and pests that could jeopardize crop yields. Although pesticides play a critical role in preserving agricultural output, their widespread usage in strawberry farming has generated a number of environmental, health, and ethical issues.
+
+\- Environmental Issues
+
+-   Pesticide runoff from strawberry fields can contaminate local water sources, leading to adverse effects on aquatic ecosystems and posing risks to non-target organisms.
+
+-   Long-lasting pesticides can accumulate in soil, potentially impacting the soil's health and disrupting natural ecosystems.
+
+\- Health Concern
+
+-   Residues of pesticides on strawberries may persist when consumed, potentially leading to health risks, particularly for vulnerable populations such as children, pregnant women, and farmworkers.
+
+-   Some pesticides used in strawberry farming have been associated with adverse health effects, including potential links to cancer and developmental disorders.
+
+\- Ethical Consideration
+
+-   Pesticide exposure is a concern for agricultural workers, who may be at risk due to their proximity to these chemicals during cultivation and harvesting.
+
+-   The use of certain pesticides in strawberry farming has prompted ethical questions regarding farmworker safety, fair labor practices, and corporate responsibility.
+
+However, The U.S. Environmental Protection Agency (EPA) is responsible for regulating pesticide use in agriculture and setting safety standards. The agency continually assesses and revises regulations to mitigate risks. Consumer demand for safer and more sustainable agricultural practices has encouraged some strawberry producers to explore alternative farming methods, including organic and integrated pest management approaches.This report highlights the ....
+
+#### 2. Data Source
+
+The dataset used in this report was taken from the United States Department of Agriculture, National Agricultural Statistics Service. The United States Department of Agriculture (USDA) is a federal agency in the United States responsible for various aspects of agriculture and food-related activities. The dataset contain 4314 observations and 21 variables along with the Census and Survey Program from 2016 to 2022.
+
+#### 3. Data Cleaning and Data Organization
+
+Data cleaning, also known as data cleansing, is the process of identifying and correcting errors, inconsistencies, and inaccuracies in datasets to improve their quality and reliability. It is a crucial step in data preparation and analysis, as high-quality data is essential for making informed decisions and obtaining meaningful insights. Data cleaning involves various tasks, including removing duplicates, handling missing values, standardizing data, correcting inaccuracies, validating data, dealing with outliers, handling data discrepancies, and transforming data. Effective data cleaning is essential for ensuring that the results of data analysis and machine learning models are accurate and reliable. It often requires a combination of automated tools and manual intervention to achieve the desired data quality. In this process I just did the same with Prof. Haviland's code posted on blackboard.
+
+```{r}
+library(knitr)  
+library(kableExtra)
+library(tidyverse)
+library(stringr)
+library(dplyr)
+library(ggplot2)
+
+strawberry <- read.csv("strawberry.csv", header = TRUE)
+```
+
+Remove columns with a single value in all columns
+
+```{r}
+drop_one_value_col <- function(df){
+drop <- NULL
+for(i in 1:dim(df)[2]){
+if((df |> distinct(df[,i]) |> count()) == 1){
+drop = c(drop, i)
+} }
+
+if(is.null(drop)){return("none")}else{
+
+   print("Columns dropped:")
+   print(colnames(df)[drop])
+   strawberry <- df[, -1*drop]
+   }
+}
+
+strawberry <- drop_one_value_col(strawberry)
+```
+
+First, we associated every row with a state by summing the counts and testing for equality with the total rows.
+
+```{r}
+state_all <- strawberry |> group_by(State) |> count()
+```
+
+Next, we can separate the census dan survey into two datasets. First, separate the data in the strawberry data frame into two distinct data frames: one for CENSUS rows and another for SURVEY rows. Next, focus on organizing the CENSUS data by grouping marketing, sales, and production data. Then, proceed to structure the SURVEY data frame by segregating marketing and production data from the information related to chemical applications.
+
+```{r}
+strwb_census <- strawberry |> filter(Program == "CENSUS")
+
+strwb_survey <- strawberry |> filter(Program == "SURVEY")
+
+## check that all of the rows are accounted for
+
+nrow(strawberry) == (nrow(strwb_census) + nrow(strwb_survey))
+
+```
+
+## 4a. Census Data Frame
+
+After we have two dataset then we can separate `Data Item` into columns and also complete the census data frame.
+
+```{r}
+  strwb_census <- strwb_census |>
+  separate_wider_delim(  cols = `Data.Item`,
+                         delim = ",",
+                         names = c("Fruit",
+                                 "temp1",
+                                 "temp2",
+                                 "temp3"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+strwb_census <- strwb_census |>
+  separate_wider_delim(  cols = temp1,
+                         delim = " - ",
+                         names = c("crop_type",
+                                 "prop_acct"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+
+strwb_census$crop_type <- str_trim(strwb_census$crop_type, side = "both")
+
+strwb_census$temp2 <- str_trim(strwb_census$temp2, side = "both")
+
+strwb_census$temp3 <- str_trim(strwb_census$temp3, side = "both")
+
+```
+
+Next, we can create a "Fresh Market" column
+
+```{r}
+## make a copy of the temp2 column named `Fresh Market`.
+strwb_census <- strwb_census |> mutate(`Fresh Market` = temp2, .after = temp2)
+
+## Remove cells in `Fresh Market` column 
+##   that begin "MEASURED"
+strwb_census$`Fresh Market` <- strwb_census$`Fresh Market` |> str_replace( "^MEA.*", "")
+
+## Remove cells in `Fresh Market` column 
+##   that begin "PROCESSING" 
+strwb_census$`Fresh Market` <- strwb_census$`Fresh Market` |> str_replace( "^P.*", "")
+
+## substitute a space for NA in `Fresh Market` column
+strwb_census$`Fresh Market`[is.na(strwb_census$`Fresh Market`)] <- ""  
+
+## in temp2 column, remove cells that begin "FRESH"
+ strwb_census$temp2 <- strwb_census$temp2 |> str_replace("^F.*", "")
+
+## Now fix the entries in the `Fresh Market` column
+##   Remove "FRESH MARKET - " from the cells
+strwb_census$`Fresh Market` <- strwb_census$`Fresh Market` |> str_replace("^FRESH MARKET - ", "")
+
+```
+
+After that, we create the process market column
+
+```{r}
+## Make a copy of temp2 named `Process Market`
+strwb_census <- strwb_census |> mutate(`Process Market` = temp2, .after = temp2)
+
+## remove `Process Market` cells beginning "MEASURED"
+strwb_census$`Process Market` <-  strwb_census$`Process Market` |> str_replace("^MEA.*", "")
+
+## substitute space for NA in `Process Market` column
+strwb_census$`Process Market`[is.na(strwb_census$`Process Market`)] <- ""
+
+## In temp2, remove cells that begin "PROCESSING"
+strwb_census$temp2 <- strwb_census$temp2 |> str_replace("^P.*", "")
+
+## In `Processing Market`, remove "PROCESSING - " from cells
+strwb_census$`Process Market` <-  strwb_census$`Process Market` |> str_replace("PROCESSING - ", "") 
+```
+
+Then, do the data cleaning again for the census data frame by remove NA's from prop_acct, temp2, and temp3
+
+```{r}
+
+## substitute a space for NA in prop_acct column
+strwb_census$prop_acct[is.na(strwb_census$prop_acct)] <- "" 
+
+## substitute a space for NA in temp2 column
+strwb_census$temp2[is.na(strwb_census$temp2)] <- "" 
+
+## substitute a space for NA in temp2 column
+strwb_census$temp3[is.na(strwb_census$temp3)] <- "" 
+
+strwb_census <- strwb_census |> unite(temp2, temp3, col="Metric", sep="")
+
+## Now fix the entries in the Metric column
+##   Remove "MEASURED IN " from the cells
+strwb_census$Metric <- strwb_census$Metric |> str_replace("MEASURED IN ", "")
+
+## move Metric to the end
+strwb_census <- strwb_census |> relocate(Metric, .before = Domain)
+
+strwb_census <- strwb_census |> relocate(`Process Market`, .before = Metric)
+
+strwb_census <- strwb_census |> rename(Totals = prop_acct)
+
+```
+
+The Value column transform
+
+```{r}
+## remove commas from numbers
+## fix footnotes
+
+## basic tools
+
+## start by getting the Values column so you can work on it 
+
+vals <- strwb_census$Value
+
+## note where vals goes in the environment.
+
+## tools -- 2 choices  base R, and stringr package
+
+## BaseR -- Piping??
+
+
+g1 <- sub(",", "", vals)
+vals[1:20]
+g1[1:20]
+
+
+g2 <- gsub(",", "", vals)
+vals[1:20]
+g2[1:20]
+
+
+## stringr - str_replace(), str_replace_all()
+
+## LOOK -- see ref for stingr pkg
+a <- vals |> str_detect(",")
+
+vals[1:20]
+a[1:20]
+
+## Still strings!!
+
+b <- vals |> str_replace(",", "")
+vals[1:20]
+b[1:20]
+
+c <- vals |> str_replace_all(",", "")
+vals[1:20]
+c[1:20]
+
+## Now notice what happens when the
+## the strings of digits are cast to numerics.
+
+## for example
+c <- as.numeric(c)
+c[1:20]
+
+
+### remove commas from Value entries
+dcomma <- function(c){
+  x_new <- as.numeric(gsub(",", "", c))
+  return(x_new)
+}
+
+
+
+#########################################  footnotes
+
+## finds single uppor case Character in parens in s2
+## e.g. "(D)"
+
+## To fine the location and value of the footnotes
+
+v <- strwb_census$Value
+
+
+## find the footnote locations
+## fn_i: locations 
+fn_i <- v |> str_detect("^\\([:upper:]\\)$") ## returns
+
+
+## dcomma returns numbers and NA's
+v1 <- dcomma(v)
+
+## locations of NA's
+na_i <- is.na(v1)
+
+## Demonstration that the locations of the footnotes
+## are the same as the locations of the NA's
+
+length(v) == sum(na_i == fn_i)
+
+## update dcomma()
+## Integrate transformation of the values column and 
+## reporting the footnote values.
+
+
+dcomma <- function(c){
+  xnew = as.numeric(gsub(",", "", c))
+  fns = unique(c[is.na(xnew)])
+  vtran = list("new_vec" = xnew, "footnotes" = fns)
+  return(vtran)
+}
+
+ 
+v_trns <- dcomma(v)
+ 
+
+ a <- v_trns$new_vec
+ a[1:20]
+ 
+ v_trns$footnotes
+ 
+```
+
+## 4b. Survey Data Frame
+
+```{r}
+# distinct(strwb_survey[,3]) |> kable()
+# c4 <- distinct(strwb_survey[,4])
+# 
+# c6 <- distinct(strwb_survey[,6])
+# c7 <- distinct(strwb_survey[,7])
+c8 <- unique(strwb_survey[, 8])
+
+
+# c3 |> kable()
+# c4 |> kable()
+# 
+# c6 |> kable()
+# c7 |> kable()
+c8 |> kable()
+
+```
+
+```{r}
+strwb_survey <- strwb_survey |> 
+  separate_wider_delim(  cols = `Data.Item`,
+                         delim = ",",
+                         names = c("temp1",
+                                 "temp2",
+                                 "temp3",
+                                 "temp4"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+strwb_survey <- strwb_survey |>
+  separate_wider_delim(  cols = temp1,
+                         delim = " - ",
+                         names = c("temp1a",
+                                 "temp1b"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+```
+
+Domain
+
+```{r}
+strwb_survey <- strwb_survey |>
+  separate_wider_delim(  cols = Domain,
+                         delim = ",",
+                         names = c("temp22",
+                                 "temp23"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+
+t22 <- unique(strwb_survey$temp22)
+
+t23 <- unique(strwb_survey$temp23)
+```
+
+Domain Category
+
+```{r}
+strwb_survey <- strwb_survey |>
+  separate_wider_delim(  cols = `Domain.Category`,
+                         delim = ",",
+                         names = c("temp42",
+                                 "temp43",
+                                 "temp44",
+                                 "temp45"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+
+## temp22 or temp42 or both == CHEMICAL 
+##  else the row contains market data
+
+
+
+strwb_survey_chem <- strwb_survey |> filter((temp22 == "CHEMICAL") | (temp42 == "CHEMICAL"))
+
+strwb_survey_mkt <- strwb_survey |> filter(!((temp22 == "CHEMICAL") | (temp42 == "CHEMICAL")))
+
+
+```
+
+Chemical Data Frame
+
+```{r}
+#| label: 1-value cols
+#| echo: false
+#| eval: true
+
+strwb_survey_chem<- drop_one_value_col(strwb_survey_chem)
+
+strwb_survey_chem <- subset(strwb_survey_chem, Value!= " (Z)")
+strwb_survey_chem <- subset(strwb_survey_chem, Value!= " (D)")
+strwb_survey_chem <- subset(strwb_survey_chem, Value!= " (NA)")
+
+```
+
+Make chemical name and chemical code columns
+
+```{r}
+strwb_survey_chem$chem_name <- str_match(strwb_survey_chem$temp43, "\\((.*?) = ")[, 2]
+strwb_survey_chem$chem_column <- str_match(strwb_survey_chem$temp43, "= (.*?)\\)")[, 2]
+```
+
+<!-- mkt -->
+
+```{r}
+#| label: mkt 
+#| echo: false
+#| eval: true
+
+strwb_survey_mkt<- drop_one_value_col(strwb_survey_mkt)
+
+strwb_survey_mkt <- subset(strwb_survey_mkt, Value!= " (Z)")
+strwb_survey_mkt <- subset(strwb_survey_mkt, Value!= " (D)")
+strwb_survey_mkt <- subset(strwb_survey_mkt, Value!= " (NA)")
+```
+
+After make the marketing and chemical data frame from Strawberry Census, I did a manual transcription from PC Code to CAS number in this .csv
+
+```{r}
+chemical <- read_csv("chemical.csv")
+strwb_survey_chem$harm_level <- chemical$harm_level
+strwb_survey_chem1 <- subset(strwb_survey_chem, harm_level!= "NA")
+```
+
+## 5. Data Vizualitation
+
+### 5A. Strawberry Survey Marketing Data Frame
+
+Create data frame for Production measured in dollars ($) and one hundred weight (cwt)
+```{r}
+
+# Create a new data frame of production measured in $
+prod_in_dollars  <- strwb_survey_mkt %>%
+  filter(temp2 == " MEASURED IN $")
+
+# Create a new data frame of production measured in cwt
+
+prod_in_cwt <- strwb_survey_mkt %>%
+  filter(temp2 == " MEASURED IN CWT")
+```
+Next, convert the value to numeric so we can make some graphs.
+
+```{r}
+prod_in_dollars$Value <- as.numeric(gsub("[^0-9.]", "", prod_in_dollars$Value))
+
+prod_in_cwt$Value <- as.numeric(gsub("[^0-9.]", "", prod_in_cwt$Value))
+
+```
+Production in Dollars
+```{r}
+summary_data <- prod_in_dollars %>%
+  group_by(Year, State) %>%
+  summarize(Sum_Value = sum(Value, na.rm = TRUE)) %>%
+  ungroup()
+
+# Create the plot
+plot1 <- ggplot(summary_data, aes(x = Year, y = Sum_Value, fill = State)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_y_log10() +  # Apply logarithmic scale to the y-axis
+  labs(
+    title = "Summarized Strawberry Production in $ by Year and State (log scale)",
+    x = "Year",
+    y = "Summed Production in dollars (log scale)",
+    fill = "State"
+  ) +
+  theme_minimal()+
+  scale_x_continuous(breaks = unique(summary_data$Year))
+
+plot1
+```
+```{r}
+summary_data1 <- prod_in_cwt %>%
+  group_by(Year, State) %>%
+  summarize(Sum_Value = sum(Value, na.rm = TRUE)) %>%
+  ungroup()
+
+# Create the plot
+plot2 <- ggplot(summary_data1, aes(x = Year, y = Sum_Value, fill = State)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_y_log10() +
+  labs(
+    title = "Summarized Strawberry Production in CWT by Year and State (log scale)",
+    x = "Year",
+    y = "Summed Production in CWT (log scale)",
+    fill = "State"
+  ) +
+  theme_minimal()+
+  scale_x_continuous(breaks = unique(summary_data1$Year))
+
+plot2
+```
+
+
+Since 2019, the survey data only appeared for California, Florida, and other states. From the Graph, we can clearly see that from 2016 to 2021 California always dominates the strawberry marketing and produced much money, followed by Florida with slight differences. If we compare those two graphs above, we can also see a slight difference of between the money they got and how many hundred weight strawberry they sold between California and Florida. So we can say that strawberry from Florida is more expensive than California. We can visualize that using variable temp1(price received) measured in $/CWT.
+
+```{r}
+price_rec <- strwb_survey_mkt %>%
+  filter(temp2 == " MEASURED IN $ / CWT")
+
+price_rec$Value <- as.numeric(gsub("[^0-9.]", "", price_rec$Value))
+
+plot3 <- ggplot(price_rec, aes(x = Year, y = Value, fill = State)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "The amount of dollars per hundred weight by Year and State",
+    x = "Year",
+    y = "Measured in $/CWT",
+    fill = "State"
+  ) +
+  theme_minimal()+
+  scale_x_continuous(breaks = unique(price_rec$Year))
+
+plot3
+
+```
+
+
+### 5B. Strawberry Survey Chemical Data Frame
+
+```{r}
+filtered_data3 <- strwb_survey_chem1[strwb_survey_chem1$temp3 == " MEASURED IN LB / ACRE / APPLICATION", ]
+
+
+strwb_survey_chem1$Value <- as.numeric(strwb_survey_chem1$Value)
+
+
+plot4 <- ggplot(strwb_survey_chem1, aes(x = Year, y = Value, fill = temp23)) +
+  stat_summary(
+    fun.y = "sum",  # You can use "mean" or other aggregation functions here
+    geom = "bar",
+    position = "stack"
+  ) +
+  scale_y_log10() +
+  facet_grid(State ~ harm_level) +
+  labs(
+    title = "Strawberry's Pesticide Application by State, Type of Pesticide, and Harm Level",
+    x = "Year",
+    y = "Aggregated Strawberry Production (lbs)",
+    fill = "Type of Pesticide"
+  ) +
+  labs() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 60, vjust =1, hjust = 1))+
+  scale_x_continuous(breaks = unique(strwb_survey_chem1$Year))
+
+  
+plot4
+```
+
+Information:
+Ib: Highly hazardous
+II: Moderately hazardous
+III: Slightly hazardous
+U: Unlikely to present acute hazard in normal user
+FM: Fumigant, not classified
+O: Obsoleteas pesticide, not classified
+
+From the figure, we can see that California possessed the highest application of pesticide used for strawberry. However this is a survey data, so we do not know the history maybe this is because Washington and Oregeno data is not completed. 
+
+```{r}
+strwb_survey_chem1 <- strwb_survey_chem1 %>%
+  mutate(
+    harmlevel_order = recode(harm_level,
+      "Ib" = 5,
+      "II" = 4,
+      "III" = 3,
+      "U" = 2,
+      "FM" = 1,
+      "O" = 1  
+    )
+  )
+```
+
+```{r}
+summary_data2 <- strwb_survey_chem1 %>%
+  group_by(State, Year) %>%
+  summarize(
+    Sum_Value = sum(Value, na.rm = TRUE),
+    Sum_harmlevel_order = sum(harmlevel_order, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+plot5 <- ggplot(summary_data2, aes(x = Year, y = Sum_Value, fill = State)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Pesticides Application on Strawberry for Several Countries from 2016 to 2021",
+    y = "Sum of Value of Pesticide Application (lb/acre/app)",
+    x = "Year",
+    fill = "State"
+  ) +
+  theme_minimal()+
+  scale_x_continuous(breaks = unique(summary_data2$Year))
+
+plot5
+```
+We can see that, California also possessed the highest number of pesticide application for growing up strawberry. So let take a look in California Data
+
+```{r}
+filtered_data4 <- strwb_survey_chem1[strwb_survey_chem1$temp3 == " MEASURED IN LB / ACRE / APPLICATION" & strwb_survey_chem1$State == "CALIFORNIA", ]
+
+plot6 <- ggplot(filtered_data4, aes(x = Year, y = Value, fill = harm_level)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Pesticides Application on Strawberry in California by Harm Level",
+    y = "Sum of Value of Pesticide Application (lb/acre/app)",
+    x = "Year",
+    fill = "Harm Level"
+  ) +
+  theme(
+    plot.title = element_text(size = 18),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 10)
+  ) +
+  scale_x_continuous(breaks = unique(filtered_data4$Year))
+
+plot6
+```
+So, the amount of pesticide used to grow strawberries in California is dominated by Fumigant which is not harmful for humans. Surprisingly, in 2019, California used a high number of pesticides in Harm Level II, which is moderately hazardous. 
+
+If we go back to summary_data1, in 2019 California had a total of 20800000 CWT of strawberries.
+
+### 5C. Strawberry Census Data Frame
+
+```{r}
+strwb_census <- subset(strwb_census, Value!= " (D)")
+strwb_census$Value <- as.numeric(gsub("[^0-9.]", "", strwb_census$Value))
+
+filtered_data5 <- strwb_census[strwb_census$Totals == "PRODUCTION", ]
+
+top_states <- filtered_data5 %>%
+  group_by(State) %>%
+  summarize(Total_Production = sum(Value, na.rm = TRUE)) %>%
+  arrange(desc(Total_Production)) %>%
+  head(10)
+
+plot7 <- ggplot(top_states, aes(x = reorder(State, -Total_Production), y = Total_Production)) +
+  scale_y_log10() +
+  geom_bar(stat = "identity", fill = "red") +
+  labs(
+    title = "Top Ten States with Highest Total Production of Strawberries",
+    x = "State",
+    y = "Total Production"
+    
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+plot7
+
+filtered_data6 <- strwb_census[strwb_census$Totals == "SALES", ]
+
+top_states <- filtered_data6 %>%
+  group_by(State) %>%
+  summarize(Total_Sales = sum(Value, na.rm = TRUE)) %>%
+  arrange(desc(Total_Sales)) %>%
+  head(10)
+
+plot8 <- ggplot(top_states, aes(x = reorder(State, -Total_Sales), y = Total_Sales)) +
+  scale_y_log10() +
+  geom_bar(stat = "identity", fill = "darkgreen") +
+  labs(
+    title = "Top Ten States with Highest Total Sales of Strawberries",
+    x = "State",
+    y = "Total Production"
+    
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+plot8
+```
+From that graphs above we can see States in US with the highest number of Production and Highest number in total sales of strawberries and we can conclude that California dominates the strawberry market in the US.
+
+

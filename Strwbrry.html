@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>strwbrry</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Strwbrry_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Strwbrry_files/libs/quarto-html/quarto.js"></script>
+<script src="Strwbrry_files/libs/quarto-html/popper.min.js"></script>
+<script src="Strwbrry_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Strwbrry_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Strwbrry_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Strwbrry_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Strwbrry_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Strwbrry_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Strwbrry_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"><img src="images/ALR-strawberry-fruit-or-vegetable-f6dd901427714e46af2d706a57b9016f-01.jpg" class="img-fluid"></h2>
+</section>
+<section id="exploratory-data-analysis-strawberry" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis-strawberry">Exploratory Data Analysis: Strawberry</h2>
+</section>
+<section id="febriany-lete" class="level2">
+<h2 class="anchored" data-anchor-id="febriany-lete">Febriany Lete</h2>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">1. Introduction</h2>
+<p>In the United States, strawberries are a famous and well-liked fruit that are appreciated for their sweet and sour flavor, brilliant red color, and adaptability in a variety of culinary applications. Strawberries are a common food in American diets, whether they are consumed raw, in jams, or as a component of sweets. The use of pesticides in strawberry production is a complicated problem that has recently received more attention than the exquisite attractiveness of this fruit.</p>
+<p>Chemicals known as pesticides are used in agriculture to eradicate weeds, illnesses, and pests that could jeopardize crop yields. Although pesticides play a critical role in preserving agricultural output, their widespread usage in strawberry farming has generated a number of environmental, health, and ethical issues.</p>
+<ul>
+<li><p>Environmental Issues</p>
+<ul>
+<li><p>Pesticide runoff from strawberry fields can contaminate local water sources, leading to adverse effects on aquatic ecosystems and posing risks to non-target organisms.</p></li>
+<li><p>Long-lasting pesticides can accumulate in soil, potentially impacting the soil’s health and disrupting natural ecosystems.</p></li>
+</ul></li>
+<li><p>Health Concern</p>
+<ul>
+<li><p>Residues of pesticides on strawberries may persist when consumed, potentially leading to health risks, particularly for vulnerable populations such as children, pregnant women, and farmworkers.</p></li>
+<li><p>Some pesticides used in strawberry farming have been associated with adverse health effects, including potential links to cancer and developmental disorders.</p></li>
+</ul></li>
+<li><p>Ethical Consideration</p>
+<ul>
+<li><p>Pesticide exposure is a concern for agricultural workers, who may be at risk due to their proximity to these chemicals during cultivation and harvesting.</p></li>
+<li><p>The use of certain pesticides in strawberry farming has prompted ethical questions regarding farmworker safety, fair labor practices, and corporate responsibility.</p></li>
+</ul></li>
+</ul>
+<p>However, The U.S. Environmental Protection Agency (EPA) is responsible for regulating pesticide use in agriculture and setting safety standards. The agency continually assesses and revises regulations to mitigate risks. Consumer demand for safer and more sustainable agricultural practices has encouraged some strawberry producers to explore alternative farming methods, including organic and integrated pest management approaches.</p>
+<p>This report highlights the ….</p>
+</section>
+<section id="data-source" class="level2">
+<h2 class="anchored" data-anchor-id="data-source">2. Data Source</h2>
+<p>The dataset used in this report was taken from the United States Department of Agriculture, National Agricultural Statistics Service. The United States Department of Agriculture (USDA) is a federal agency in the United States responsible for various aspects of agriculture and food-related activities. The dataset contain 4314 observations and 21 variables along with the Census and Survey Program from 2016 to 2022.</p>
+</section>
+<section id="data-cleaning-and-data-organization" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning-and-data-organization">3. Data Cleaning and Data Organization</h2>
+<p>Data cleaning, also known as data cleansing, is the process of identifying and correcting errors, inconsistencies, and inaccuracies in datasets to improve their quality and reliability. It is a crucial step in data preparation and analysis, as high-quality data is essential for making informed decisions and obtaining meaningful insights. Data cleaning involves various tasks, including removing duplicates, handling missing values, standardizing data, correcting inaccuracies, validating data, dealing with outliers, handling data discrepancies, and transforming data. Effective data cleaning is essential for ensuring that the results of data analysis and machine learning models are accurate and reliable. It often requires a combination of automated tools and manual intervention to achieve the desired data quality.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)  </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter()     masks stats::filter()
+✖ dplyr::group_rows() masks kableExtra::group_rows()
+✖ dplyr::lag()        masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>strawberry <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"strawberry.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Remove columns with a single value in all columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>drop_one_value_col <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>drop <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">dim</span>(df)[<span class="dv">2</span>]){</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>((df <span class="sc">|&gt;</span> <span class="fu">distinct</span>(df[,i]) <span class="sc">|&gt;</span> <span class="fu">count</span>()) <span class="sc">==</span> <span class="dv">1</span>){</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>drop <span class="ot">=</span> <span class="fu">c</span>(drop, i)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>} }</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.null</span>(drop)){<span class="fu">return</span>(<span class="st">"none"</span>)}<span class="cf">else</span>{</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">"Columns dropped:"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="fu">colnames</span>(df)[drop])</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>   strawberry <span class="ot">&lt;-</span> df[, <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>drop]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>strawberry <span class="ot">&lt;-</span> <span class="fu">drop_one_value_col</span>(strawberry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Columns dropped:"
+ [1] "Week.Ending"      "Geo.Level"        "Ag.District"      "Ag.District.Code"
+ [5] "County"           "County.ANSI"      "Zip.Code"         "Region"          
+ [9] "watershed_code"   "Watershed"        "Commodity"       </code></pre>
+</div>
+</div>
+<p>First, we associated every row with a state by summing the counts and testing for equality with the total rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>state_all <span class="ot">&lt;-</span> strawberry <span class="sc">|&gt;</span> <span class="fu">group_by</span>(State) <span class="sc">|&gt;</span> <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we can separate the census dan survey into two datasets. First, separate the data in the strawberry data frame into two distinct data frames: one for CENSUS rows and another for SURVEY rows. Next, focus on organizing the CENSUS data by grouping marketing, sales, and production data. Then, proceed to structure the SURVEY data frame by segregating marketing and production data from the information related to chemical applications.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>strwb_census <span class="ot">&lt;-</span> strawberry <span class="sc">|&gt;</span> <span class="fu">filter</span>(Program <span class="sc">==</span> <span class="st">"CENSUS"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>strwb_survey <span class="ot">&lt;-</span> strawberry <span class="sc">|&gt;</span> <span class="fu">filter</span>(Program <span class="sc">==</span> <span class="st">"SURVEY"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## check that all of the rows are accounted for</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(strawberry) <span class="sc">==</span> (<span class="fu">nrow</span>(strwb_census) <span class="sc">+</span> <span class="fu">nrow</span>(strwb_survey))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="a.-census-data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="a.-census-data-frame">4a. Census Data Frame</h2>
+<p>After we have two dataset then we can separate <code>Data Item</code> into columns and also complete the census data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  strwb_census <span class="ot">&lt;-</span> strwb_census <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(  <span class="at">cols =</span> <span class="st">`</span><span class="at">Data.Item</span><span class="st">`</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">delim =</span> <span class="st">","</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"Fruit"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp1"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp2"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp3"</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_many =</span> <span class="st">"error"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_few =</span> <span class="st">"align_start"</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>strwb_census <span class="ot">&lt;-</span> strwb_census <span class="sc">|&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(  <span class="at">cols =</span> temp1,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">delim =</span> <span class="st">" - "</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"crop_type"</span>,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"prop_acct"</span>),</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_many =</span> <span class="st">"error"</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_few =</span> <span class="st">"align_start"</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span>crop_type <span class="ot">&lt;-</span> <span class="fu">str_trim</span>(strwb_census<span class="sc">$</span>crop_type, <span class="at">side =</span> <span class="st">"both"</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span>temp2 <span class="ot">&lt;-</span> <span class="fu">str_trim</span>(strwb_census<span class="sc">$</span>temp2, <span class="at">side =</span> <span class="st">"both"</span>)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span>temp3 <span class="ot">&lt;-</span> <span class="fu">str_trim</span>(strwb_census<span class="sc">$</span>temp3, <span class="at">side =</span> <span class="st">"both"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we can create a “Fresh Market” column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## make a copy of the temp2 column named `Fresh Market`.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>strwb_census <span class="ot">&lt;-</span> strwb_census <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Fresh Market</span><span class="st">`</span> <span class="ot">=</span> temp2, <span class="at">.after =</span> temp2)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove cells in `Fresh Market` column </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   that begin "MEASURED"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Fresh Market</span><span class="st">`</span> <span class="ot">&lt;-</span> strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Fresh Market</span><span class="st">`</span> <span class="sc">|&gt;</span> <span class="fu">str_replace</span>( <span class="st">"^MEA.*"</span>, <span class="st">""</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove cells in `Fresh Market` column </span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   that begin "PROCESSING" </span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Fresh Market</span><span class="st">`</span> <span class="ot">&lt;-</span> strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Fresh Market</span><span class="st">`</span> <span class="sc">|&gt;</span> <span class="fu">str_replace</span>( <span class="st">"^P.*"</span>, <span class="st">""</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="do">## substitute a space for NA in `Fresh Market` column</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Fresh Market</span><span class="st">`</span>[<span class="fu">is.na</span>(strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Fresh Market</span><span class="st">`</span>)] <span class="ot">&lt;-</span> <span class="st">""</span>  </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="do">## in temp2 column, remove cells that begin "FRESH"</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a> strwb_census<span class="sc">$</span>temp2 <span class="ot">&lt;-</span> strwb_census<span class="sc">$</span>temp2 <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"^F.*"</span>, <span class="st">""</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Now fix the entries in the `Fresh Market` column</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="do">##   Remove "FRESH MARKET - " from the cells</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Fresh Market</span><span class="st">`</span> <span class="ot">&lt;-</span> strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Fresh Market</span><span class="st">`</span> <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"^FRESH MARKET - "</span>, <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After that, we create the process market column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Make a copy of temp2 named `Process Market`</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>strwb_census <span class="ot">&lt;-</span> strwb_census <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Process Market</span><span class="st">`</span> <span class="ot">=</span> temp2, <span class="at">.after =</span> temp2)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">## remove `Process Market` cells beginning "MEASURED"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Process Market</span><span class="st">`</span> <span class="ot">&lt;-</span>  strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Process Market</span><span class="st">`</span> <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"^MEA.*"</span>, <span class="st">""</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## substitute space for NA in `Process Market` column</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Process Market</span><span class="st">`</span>[<span class="fu">is.na</span>(strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Process Market</span><span class="st">`</span>)] <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="do">## In temp2, remove cells that begin "PROCESSING"</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span>temp2 <span class="ot">&lt;-</span> strwb_census<span class="sc">$</span>temp2 <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"^P.*"</span>, <span class="st">""</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="do">## In `Processing Market`, remove "PROCESSING - " from cells</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Process Market</span><span class="st">`</span> <span class="ot">&lt;-</span>  strwb_census<span class="sc">$</span><span class="st">`</span><span class="at">Process Market</span><span class="st">`</span> <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"PROCESSING - "</span>, <span class="st">""</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, do the data cleaning again for the census data frame by remove NA’s from prop_acct, temp2, and temp3</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## substitute a space for NA in prop_acct column</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span>prop_acct[<span class="fu">is.na</span>(strwb_census<span class="sc">$</span>prop_acct)] <span class="ot">&lt;-</span> <span class="st">""</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="do">## substitute a space for NA in temp2 column</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span>temp2[<span class="fu">is.na</span>(strwb_census<span class="sc">$</span>temp2)] <span class="ot">&lt;-</span> <span class="st">""</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="do">## substitute a space for NA in temp2 column</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span>temp3[<span class="fu">is.na</span>(strwb_census<span class="sc">$</span>temp3)] <span class="ot">&lt;-</span> <span class="st">""</span> </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>strwb_census <span class="ot">&lt;-</span> strwb_census <span class="sc">|&gt;</span> <span class="fu">unite</span>(temp2, temp3, <span class="at">col=</span><span class="st">"Metric"</span>, <span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Now fix the entries in the Metric column</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   Remove "MEASURED IN " from the cells</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>strwb_census<span class="sc">$</span>Metric <span class="ot">&lt;-</span> strwb_census<span class="sc">$</span>Metric <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"MEASURED IN "</span>, <span class="st">""</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="do">## move Metric to the end</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>strwb_census <span class="ot">&lt;-</span> strwb_census <span class="sc">|&gt;</span> <span class="fu">relocate</span>(Metric, <span class="at">.before =</span> Domain)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>strwb_census <span class="ot">&lt;-</span> strwb_census <span class="sc">|&gt;</span> <span class="fu">relocate</span>(<span class="st">`</span><span class="at">Process Market</span><span class="st">`</span>, <span class="at">.before =</span> Metric)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>strwb_census <span class="ot">&lt;-</span> strwb_census <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">Totals =</span> prop_acct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-value-column-transform" class="level2">
+<h2 class="anchored" data-anchor-id="the-value-column-transform">The Value column transform</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## remove commas from numbers</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">## fix footnotes</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="do">## basic tools</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## start by getting the Values column so you can work on it </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">&lt;-</span> strwb_census<span class="sc">$</span>Value</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="do">## note where vals goes in the environment.</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="do">## tools -- 2 choices  base R, and stringr package</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="do">## BaseR -- Piping??</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">","</span>, <span class="st">""</span>, vals)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>vals[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2"           " (D)"        " (D)"        " (D)"        "2"          
+ [6] " (D)"        " (D)"        "142"         "1,413,251"   "311,784,980"
+[11] "1,412,627"   "141"         " (D)"        "1,401,384"   "7"          
+[16] " (D)"        "11,244"      "8"           "183"         "40,890"     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>g1[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2"          " (D)"       " (D)"       " (D)"       "2"         
+ [6] " (D)"       " (D)"       "142"        "1413,251"   "311784,980"
+[11] "1412,627"   "141"        " (D)"       "1401,384"   "7"         
+[16] " (D)"       "11244"      "8"          "183"        "40890"     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">","</span>, <span class="st">""</span>, vals)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>vals[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2"           " (D)"        " (D)"        " (D)"        "2"          
+ [6] " (D)"        " (D)"        "142"         "1,413,251"   "311,784,980"
+[11] "1,412,627"   "141"         " (D)"        "1,401,384"   "7"          
+[16] " (D)"        "11,244"      "8"           "183"         "40,890"     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>g2[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2"         " (D)"      " (D)"      " (D)"      "2"         " (D)"     
+ [7] " (D)"      "142"       "1413251"   "311784980" "1412627"   "141"      
+[13] " (D)"      "1401384"   "7"         " (D)"      "11244"     "8"        
+[19] "183"       "40890"    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## stringr - str_replace(), str_replace_all()</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="do">## LOOK -- see ref for stingr pkg</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> vals <span class="sc">|&gt;</span> <span class="fu">str_detect</span>(<span class="st">","</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>vals[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2"           " (D)"        " (D)"        " (D)"        "2"          
+ [6] " (D)"        " (D)"        "142"         "1,413,251"   "311,784,980"
+[11] "1,412,627"   "141"         " (D)"        "1,401,384"   "7"          
+[16] " (D)"        "11,244"      "8"           "183"         "40,890"     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE
+[13] FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Still strings!!</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> vals <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">","</span>, <span class="st">""</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>vals[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2"           " (D)"        " (D)"        " (D)"        "2"          
+ [6] " (D)"        " (D)"        "142"         "1,413,251"   "311,784,980"
+[11] "1,412,627"   "141"         " (D)"        "1,401,384"   "7"          
+[16] " (D)"        "11,244"      "8"           "183"         "40,890"     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2"          " (D)"       " (D)"       " (D)"       "2"         
+ [6] " (D)"       " (D)"       "142"        "1413,251"   "311784,980"
+[11] "1412,627"   "141"        " (D)"       "1401,384"   "7"         
+[16] " (D)"       "11244"      "8"          "183"        "40890"     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> vals <span class="sc">|&gt;</span> <span class="fu">str_replace_all</span>(<span class="st">","</span>, <span class="st">""</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>vals[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2"           " (D)"        " (D)"        " (D)"        "2"          
+ [6] " (D)"        " (D)"        "142"         "1,413,251"   "311,784,980"
+[11] "1,412,627"   "141"         " (D)"        "1,401,384"   "7"          
+[16] " (D)"        "11,244"      "8"           "183"         "40,890"     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>c[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2"         " (D)"      " (D)"      " (D)"      "2"         " (D)"     
+ [7] " (D)"      "142"       "1413251"   "311784980" "1412627"   "141"      
+[13] " (D)"      "1401384"   "7"         " (D)"      "11244"     "8"        
+[19] "183"       "40890"    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Now notice what happens when the</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="do">## the strings of digits are cast to numerics.</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">## for example</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>c[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]         2        NA        NA        NA         2        NA        NA
+ [8]       142   1413251 311784980   1412627       141        NA   1401384
+[15]         7        NA     11244         8       183     40890</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">### remove commas from Value entries</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>dcomma <span class="ot">&lt;-</span> <span class="cf">function</span>(c){</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  x_new <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">","</span>, <span class="st">""</span>, c))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x_new)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="do">#########################################  footnotes</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="do">## finds single uppor case Character in parens in s2</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="do">## e.g. "(D)"</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="do">## To fine the location and value of the footnotes</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> strwb_census<span class="sc">$</span>Value</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="do">## find the footnote locations</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="do">## fn_i: locations </span></span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>fn_i <span class="ot">&lt;-</span> v <span class="sc">|&gt;</span> <span class="fu">str_detect</span>(<span class="st">"^</span><span class="sc">\\</span><span class="st">([:upper:]</span><span class="sc">\\</span><span class="st">)$"</span>) <span class="do">## returns</span></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a><span class="do">## dcomma returns numbers and NA's</span></span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">dcomma</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dcomma(v): NAs introduced by coercion</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="do">## locations of NA's</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>na_i <span class="ot">&lt;-</span> <span class="fu">is.na</span>(v1)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Demonstration that the locations of the footnotes</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="do">## are the same as the locations of the NA's</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v) <span class="sc">==</span> <span class="fu">sum</span>(na_i <span class="sc">==</span> fn_i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## update dcomma()</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Integrate transformation of the values column and </span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="do">## reporting the footnote values.</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>dcomma <span class="ot">&lt;-</span> <span class="cf">function</span>(c){</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  xnew <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">","</span>, <span class="st">""</span>, c))</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  fns <span class="ot">=</span> <span class="fu">unique</span>(c[<span class="fu">is.na</span>(xnew)])</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  vtran <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"new_vec"</span> <span class="ot">=</span> xnew, <span class="st">"footnotes"</span> <span class="ot">=</span> fns)</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(vtran)</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>v_trns <span class="ot">&lt;-</span> <span class="fu">dcomma</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dcomma(v): NAs introduced by coercion</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a> a <span class="ot">&lt;-</span> v_trns<span class="sc">$</span>new_vec</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a> a[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]         2        NA        NA        NA         2        NA        NA
+ [8]       142   1413251 311784980   1412627       141        NA   1401384
+[15]         7        NA     11244         8       183     40890</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a> v_trns<span class="sc">$</span>footnotes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] " (D)"</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-survey-data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="b.-survey-data-frame">4b. Survey Data Frame</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distinct(strwb_survey[,3]) |&gt; kable()</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c4 &lt;- distinct(strwb_survey[,4])</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># c6 &lt;- distinct(strwb_survey[,6])</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co"># c7 &lt;- distinct(strwb_survey[,7])</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>c8 <span class="ot">&lt;-</span> <span class="fu">unique</span>(strwb_survey[, <span class="dv">8</span>])</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="co"># c3 |&gt; kable()</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="co"># c4 |&gt; kable()</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="co"># c6 |&gt; kable()</span></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="co"># c7 |&gt; kable()</span></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>c8 <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">NOT SPECIFIED</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (AZOXYSTROBIN = 128810)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BACILLUS AMYLOLIQUEFAC F727 = 16489)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BACILLUS AMYLOLIQUEFACIENS MBI 600 = 129082)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BACILLUS AMYLOLIQUEFACIENS STRAIN D747 = 16482)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BACILLUS PUMILUS = 6485)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BACILLUS SUBTILIS = 6479)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BLAD = 30006)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BORAX DECAHYDRATE = 11102)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BOSCALID = 128008)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BT SUBSP KURSTAKI EVB-113-19 = 6544)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (CAPTAN = 81301)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (COPPER OCTANOATE = 23306)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (CYFLUFENAMID = 555550)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (CYPRODINIL = 288202)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (DIFENOCONAZOLE = 128847)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (FENHEXAMID = 90209)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (FLUDIOXONIL = 71503)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (FLUOPYRAM = 80302)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (FLUXAPYROXAD = 138009)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (FOSETYL-AL = 123301)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (ISOFETAMID = 270000)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (MEFENOXAM = 113502)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (MONO-POTASSIUM SALT = 76416)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (MYCLOBUTANIL = 128857)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (PENTHIOPYRAD = 90112)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (POLYOXIN D ZINC SALT = 230000)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (POTASSIUM BICARBON. = 73508)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (PROPICONAZOLE = 122101)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (PYRACLOSTROBIN = 99100)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (PYRIMETHANIL = 288201)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (QUINOLINE = 55459)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (STREPTOMYCES LYDICUS = 6327)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (SULFUR = 77501)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (TETRACONAZOLE = 120603)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (THIOPHANATE-METHYL = 102001)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (THIRAM = 79801)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (TOTAL)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (TRIFLOXYSTROBIN = 129112)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (TRIFLUMIZOLE = 128879)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (CARFENTRAZONE-ETHYL = 128712)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (FLUMIOXAZIN = 129034)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (GLYPHOSATE ISO. SALT = 103601)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (GLYPHOSATE POT. SALT = 103613)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (NAPROPAMIDE = 103001)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (OXYFLUORFEN = 111601)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (PARAQUAT = 61601)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (PENDIMETHALIN = 108501)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (TOTAL)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (ABAMECTIN = 122804)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (ACEQUINOCYL = 6329)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (ACETAMIPRID = 99050)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (AZADIRACHTIN = 121701)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BEAUVERIA BASSIANA = 128924)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BIFENAZATE = 586)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BIFENTHRIN = 128825)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BT KURSTAK ABTS-1857 = 6523)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BT KURSTAKI ABTS-351 = 6522)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BT KURSTAKI EG7841 = 6453)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BT KURSTAKI SA-11 = 6519)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BT SUB AIZAWAI GC-91 = 6426)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BUPROFEZIN = 275100)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (BURKHOLDERIA A396 CELLS &amp; MEDIA = 6534)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (CANOLA OIL = 11332)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (CHLORANTRANILIPROLE = 90100)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (CHROMOBAC SUBTSUGAE PRAA4-1 CELLS AND SPENT MEDIA = 16329)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (CYANTRANILIPROLE = 90098)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (CYFLUMETOFEN = 138831)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (DIAZINON = 57801)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (ETOXAZOLE = 107091)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (FENBUTATIN-OXIDE = 104601)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (FENPROPATHRIN = 127901)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (FENPYROXIMATE = 129131)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (FLONICAMID = 128016)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (FLUPYRADIFURONE = 122304)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (HELICOVERPA ZEA NPV = 107300)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (HEXYTHIAZOX = 128849)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (IMIDACLOPRID = 129099)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (MALATHION = 57701)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (METHOXYFENOZIDE = 121027)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (NALED = 34401)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (NEEM OIL = 25006)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (NEEM OIL, CLAR. HYD. = 25007)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (NOVALURON = 124002)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (PETROLEUM DISTILLATE = 63503)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (PIPERONYL BUTOXIDE = 67501)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (POTASSIUM SALTS = 79021)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (PYRETHRINS = 69001)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (PYRIDABEN = 129105)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (PYRIPROXYFEN = 129032)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (SPINETORAM = 110007)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (SPINOSAD = 110003)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (SPIROMESIFEN = 24875)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (THIAMETHOXAM = 60109)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (TOTAL)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (ACIBENZOLAR-S-METHYL = 61402)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (CAPRIC ACID = 128955)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (CAPRYLIC ACID = 128919)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (CAPSICUM OLEORESIN EXTRACT = 70704)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (CHLOROPICRIN = 81501)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (DICHLOROPROPENE = 29001)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (FLUTRIAFOL = 128940)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (GARLIC OIL = 128827)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (HYDROGEN PEROXIDE = 595)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (IRON PHOSPHATE = 34903)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (METAM-POTASSIUM = 39002)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (MINERAL OIL = 63502)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (PAECILOMYCES FUMOSOR = 115002)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (PEROXYACETIC ACID = 63201)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (POTASSIUM SILICATE = 72606)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (PSEUDOMONAS CHLORORAPHIS STRAIN AFS009 = 6800)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (REYNOUTRIA SACHALINE = 55809)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (TOTAL)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (PYDIFLUMETOFEN = 90110)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (CLETHODIM = 121011)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (COPPER ETHANOLAMINE = 24409)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (DIMETHENAMID = 129051)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (FLUROXYPYR 1-MHE = 128968)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (HALOSULFURON-METHYL = 128721)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (KANTOR = 129108)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (CARBARYL = 56801)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (FENAZAQUIN = 44501)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (SULFOXAFLOR = 5210)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (CYTOKININS = 116801)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (ETHEPHON = 99801)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (INDOLEBUTYRIC ACID = 46701)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (BACILLUS SUBT. GB03 = 129068)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (COPPER HYDROXIDE = 23401)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (TRICHODERMA HARZ. = 119202)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (GLUFOSINATE-AMMONIUM = 128850)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (SULFENTRAZONE = 129081)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (CHLORPYRIFOS = 59101)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (SOYBEAN OIL = 31605)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (ZETA-CYPERMETHRIN = 129064)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (AUREOBASIDIUM PULLULANS DSM 14940 = 46010)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (AUREOBASIDIUM PULLULANS DSM 14941 = 36010)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (BT KURSTAKI SA-12 = 6518)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (GLIOCLADIUM VIRENS = 129000)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (METALDEHYDE = 53001)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (METAM-SODIUM = 39003)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (TRICHODERMA VIRENS STRAIN G-41 = 176604)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FERTILIZER: (NITROGEN)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FERTILIZER: (PHOSPHATE)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FERTILIZER: (POTASH)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FERTILIZER: (SULFUR)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (COPPER CHLORIDE HYD. = 23501)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (DODINE = 44301)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (FLUTOLANIL = 128975)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (2,4-D, DIMETH. SALT = 30019)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (2,4-D, TRIISO. SALT = 30035)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (CYPERMETHRIN = 109702)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (ALKYL. DIM. BENZ. AM = 69105)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (DECYLDIMETHYLOCTYL = 69165)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (DIDECYL DIM. AMMON. = 69166)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (DIMETHYLDIOCTYL = 69149)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (IPRODIONE = 109801)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (CYFLUMETOFEN&nbsp;= 138831)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (EMAMECTIN BENZOATE = 122806)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (LAMBDA-CYHALOTHRIN = 128897)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (SPIROTETRAMAT = 392201)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (MUSTARD OIL = 4901)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (DIMETHYL DISULFIDE (DMDS) = 29088)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (COPPER OXIDE = 25601)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (AMMONIUM PELARGONATE = 31802)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (FLUBENDIAMIDE = 27602)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (METHYL BROMIDE = 53201)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (CHLOROTHALONIL = 81901)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (CYAZOFAMID = 85651)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, FUNGICIDE: (MANCOZEB = 14504)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (ENDOSULFAN = 79401)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, OTHER: (CAPSAICIN = 70701)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, OTHER: (HARPIN A B PROTEIN = 6506)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (CLOPYRALID MONO SALT = 117401)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (SIMAZINE = 80807)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (TERBACIL = 12701)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHEMICAL, INSECTICIDE: (FERRIC SODIUM EDTA = 139114)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHEMICAL, HERBICIDE: (CLOMAZONE = 125401)</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>strwb_survey <span class="ot">&lt;-</span> strwb_survey <span class="sc">|&gt;</span> </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(  <span class="at">cols =</span> <span class="st">`</span><span class="at">Data.Item</span><span class="st">`</span>,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">delim =</span> <span class="st">","</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"temp1"</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp2"</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp3"</span>,</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp4"</span>),</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_many =</span> <span class="st">"error"</span>,</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_few =</span> <span class="st">"align_start"</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>strwb_survey <span class="ot">&lt;-</span> strwb_survey <span class="sc">|&gt;</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(  <span class="at">cols =</span> temp1,</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">delim =</span> <span class="st">" - "</span>,</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"temp1a"</span>,</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp1b"</span>),</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_many =</span> <span class="st">"error"</span>,</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_few =</span> <span class="st">"align_start"</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Domain</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>strwb_survey <span class="ot">&lt;-</span> strwb_survey <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(  <span class="at">cols =</span> Domain,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">delim =</span> <span class="st">","</span>,</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"temp22"</span>,</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp23"</span>),</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_many =</span> <span class="st">"error"</span>,</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_few =</span> <span class="st">"align_start"</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>t22 <span class="ot">&lt;-</span> <span class="fu">unique</span>(strwb_survey<span class="sc">$</span>temp22)</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>t23 <span class="ot">&lt;-</span> <span class="fu">unique</span>(strwb_survey<span class="sc">$</span>temp23)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Domain Category</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>strwb_survey <span class="ot">&lt;-</span> strwb_survey <span class="sc">|&gt;</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(  <span class="at">cols =</span> <span class="st">`</span><span class="at">Domain.Category</span><span class="st">`</span>,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">delim =</span> <span class="st">","</span>,</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"temp42"</span>,</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp43"</span>,</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp44"</span>,</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"temp45"</span>),</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_many =</span> <span class="st">"error"</span>,</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">too_few =</span> <span class="st">"align_start"</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

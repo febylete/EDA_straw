@@ -1,0 +1,385 @@
+## ![](images/ALR-strawberry-fruit-or-vegetable-f6dd901427714e46af2d706a57b9016f-01.jpg)
+
+## Exploratory Data Analysis: Strawberry
+
+## Febriany Lete
+
+## 1. Introduction
+
+In the United States, strawberries are a famous and well-liked fruit that are appreciated for their sweet and sour flavor, brilliant red color, and adaptability in a variety of culinary applications. Strawberries are a common food in American diets, whether they are consumed raw, in jams, or as a component of sweets. The use of pesticides in strawberry production is a complicated problem that has recently received more attention than the exquisite attractiveness of this fruit.
+
+Chemicals known as pesticides are used in agriculture to eradicate weeds, illnesses, and pests that could jeopardize crop yields. Although pesticides play a critical role in preserving agricultural output, their widespread usage in strawberry farming has generated a number of environmental, health, and ethical issues.
+
+-   Environmental Issues
+
+    -   Pesticide runoff from strawberry fields can contaminate local water sources, leading to adverse effects on aquatic ecosystems and posing risks to non-target organisms.
+
+    -   Long-lasting pesticides can accumulate in soil, potentially impacting the soil's health and disrupting natural ecosystems.
+
+-   Health Concern
+
+    -   Residues of pesticides on strawberries may persist when consumed, potentially leading to health risks, particularly for vulnerable populations such as children, pregnant women, and farmworkers.
+
+    -   Some pesticides used in strawberry farming have been associated with adverse health effects, including potential links to cancer and developmental disorders.
+
+-   Ethical Consideration
+
+    -   Pesticide exposure is a concern for agricultural workers, who may be at risk due to their proximity to these chemicals during cultivation and harvesting.
+
+    -   The use of certain pesticides in strawberry farming has prompted ethical questions regarding farmworker safety, fair labor practices, and corporate responsibility.
+
+However, The U.S. Environmental Protection Agency (EPA) is responsible for regulating pesticide use in agriculture and setting safety standards. The agency continually assesses and revises regulations to mitigate risks. Consumer demand for safer and more sustainable agricultural practices has encouraged some strawberry producers to explore alternative farming methods, including organic and integrated pest management approaches.
+
+This report highlights the ....
+
+## 2. Data Source
+
+The dataset used in this report was taken from the United States Department of Agriculture, National Agricultural Statistics Service. The United States Department of Agriculture (USDA) is a federal agency in the United States responsible for various aspects of agriculture and food-related activities. The dataset contain 4314 observations and 21 variables along with the Census and Survey Program from 2016 to 2022.
+
+## 3. Data Cleaning and Data Organization
+
+Data cleaning, also known as data cleansing, is the process of identifying and correcting errors, inconsistencies, and inaccuracies in datasets to improve their quality and reliability. It is a crucial step in data preparation and analysis, as high-quality data is essential for making informed decisions and obtaining meaningful insights. Data cleaning involves various tasks, including removing duplicates, handling missing values, standardizing data, correcting inaccuracies, validating data, dealing with outliers, handling data discrepancies, and transforming data. Effective data cleaning is essential for ensuring that the results of data analysis and machine learning models are accurate and reliable. It often requires a combination of automated tools and manual intervention to achieve the desired data quality.
+
+```{r}
+library(knitr)  
+library(kableExtra)
+library(tidyverse)
+library(stringr)
+
+strawberry <- read.csv("strawberry.csv", header = TRUE)
+```
+
+Remove columns with a single value in all columns
+
+```{r}
+drop_one_value_col <- function(df){
+drop <- NULL
+for(i in 1:dim(df)[2]){
+if((df |> distinct(df[,i]) |> count()) == 1){
+drop = c(drop, i)
+} }
+
+if(is.null(drop)){return("none")}else{
+
+   print("Columns dropped:")
+   print(colnames(df)[drop])
+   strawberry <- df[, -1*drop]
+   }
+}
+
+strawberry <- drop_one_value_col(strawberry)
+```
+
+First, we associated every row with a state by summing the counts and testing for equality with the total rows.
+
+```{r}
+state_all <- strawberry |> group_by(State) |> count()
+```
+
+Next, we can separate the census dan survey into two datasets. First, separate the data in the strawberry data frame into two distinct data frames: one for CENSUS rows and another for SURVEY rows. Next, focus on organizing the CENSUS data by grouping marketing, sales, and production data. Then, proceed to structure the SURVEY data frame by segregating marketing and production data from the information related to chemical applications.
+
+```{r}
+strwb_census <- strawberry |> filter(Program == "CENSUS")
+
+strwb_survey <- strawberry |> filter(Program == "SURVEY")
+
+## check that all of the rows are accounted for
+
+nrow(strawberry) == (nrow(strwb_census) + nrow(strwb_survey))
+
+```
+
+## 4a. Census Data Frame
+
+After we have two dataset then we can separate `Data Item` into columns and also complete the census data frame.
+
+```{r}
+  strwb_census <- strwb_census |>
+  separate_wider_delim(  cols = `Data.Item`,
+                         delim = ",",
+                         names = c("Fruit",
+                                 "temp1",
+                                 "temp2",
+                                 "temp3"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+strwb_census <- strwb_census |>
+  separate_wider_delim(  cols = temp1,
+                         delim = " - ",
+                         names = c("crop_type",
+                                 "prop_acct"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+
+strwb_census$crop_type <- str_trim(strwb_census$crop_type, side = "both")
+
+strwb_census$temp2 <- str_trim(strwb_census$temp2, side = "both")
+
+strwb_census$temp3 <- str_trim(strwb_census$temp3, side = "both")
+
+```
+
+Next, we can create a "Fresh Market" column
+
+```{r}
+## make a copy of the temp2 column named `Fresh Market`.
+strwb_census <- strwb_census |> mutate(`Fresh Market` = temp2, .after = temp2)
+
+## Remove cells in `Fresh Market` column 
+##   that begin "MEASURED"
+strwb_census$`Fresh Market` <- strwb_census$`Fresh Market` |> str_replace( "^MEA.*", "")
+
+## Remove cells in `Fresh Market` column 
+##   that begin "PROCESSING" 
+strwb_census$`Fresh Market` <- strwb_census$`Fresh Market` |> str_replace( "^P.*", "")
+
+## substitute a space for NA in `Fresh Market` column
+strwb_census$`Fresh Market`[is.na(strwb_census$`Fresh Market`)] <- ""  
+
+## in temp2 column, remove cells that begin "FRESH"
+ strwb_census$temp2 <- strwb_census$temp2 |> str_replace("^F.*", "")
+
+## Now fix the entries in the `Fresh Market` column
+##   Remove "FRESH MARKET - " from the cells
+strwb_census$`Fresh Market` <- strwb_census$`Fresh Market` |> str_replace("^FRESH MARKET - ", "")
+
+```
+
+After that, we create the process market column
+
+```{r}
+## Make a copy of temp2 named `Process Market`
+strwb_census <- strwb_census |> mutate(`Process Market` = temp2, .after = temp2)
+
+## remove `Process Market` cells beginning "MEASURED"
+strwb_census$`Process Market` <-  strwb_census$`Process Market` |> str_replace("^MEA.*", "")
+
+## substitute space for NA in `Process Market` column
+strwb_census$`Process Market`[is.na(strwb_census$`Process Market`)] <- ""
+
+## In temp2, remove cells that begin "PROCESSING"
+strwb_census$temp2 <- strwb_census$temp2 |> str_replace("^P.*", "")
+
+## In `Processing Market`, remove "PROCESSING - " from cells
+strwb_census$`Process Market` <-  strwb_census$`Process Market` |> str_replace("PROCESSING - ", "") 
+```
+
+Then, do the data cleaning again for the census data frame by remove NA's from prop_acct, temp2, and temp3
+
+```{r}
+## substitute a space for NA in prop_acct column
+strwb_census$prop_acct[is.na(strwb_census$prop_acct)] <- "" 
+
+## substitute a space for NA in temp2 column
+strwb_census$temp2[is.na(strwb_census$temp2)] <- "" 
+
+## substitute a space for NA in temp2 column
+strwb_census$temp3[is.na(strwb_census$temp3)] <- "" 
+
+strwb_census <- strwb_census |> unite(temp2, temp3, col="Metric", sep="")
+
+## Now fix the entries in the Metric column
+##   Remove "MEASURED IN " from the cells
+strwb_census$Metric <- strwb_census$Metric |> str_replace("MEASURED IN ", "")
+
+## move Metric to the end
+strwb_census <- strwb_census |> relocate(Metric, .before = Domain)
+
+strwb_census <- strwb_census |> relocate(`Process Market`, .before = Metric)
+
+strwb_census <- strwb_census |> rename(Totals = prop_acct)
+
+```
+
+## The Value column transform
+
+```{r}
+## remove commas from numbers
+## fix footnotes
+
+## basic tools
+
+## start by getting the Values column so you can work on it 
+
+vals <- strwb_census$Value
+
+## note where vals goes in the environment.
+
+## tools -- 2 choices  base R, and stringr package
+
+## BaseR -- Piping??
+
+
+g1 <- sub(",", "", vals)
+vals[1:20]
+g1[1:20]
+
+
+g2 <- gsub(",", "", vals)
+vals[1:20]
+g2[1:20]
+
+
+## stringr - str_replace(), str_replace_all()
+
+## LOOK -- see ref for stingr pkg
+a <- vals |> str_detect(",")
+
+vals[1:20]
+a[1:20]
+
+## Still strings!!
+
+b <- vals |> str_replace(",", "")
+vals[1:20]
+b[1:20]
+
+c <- vals |> str_replace_all(",", "")
+vals[1:20]
+c[1:20]
+
+## Now notice what happens when the
+## the strings of digits are cast to numerics.
+
+## for example
+c <- as.numeric(c)
+c[1:20]
+
+
+### remove commas from Value entries
+dcomma <- function(c){
+  x_new <- as.numeric(gsub(",", "", c))
+  return(x_new)
+}
+
+
+
+#########################################  footnotes
+
+## finds single uppor case Character in parens in s2
+## e.g. "(D)"
+
+## To fine the location and value of the footnotes
+
+v <- strwb_census$Value
+
+
+## find the footnote locations
+## fn_i: locations 
+fn_i <- v |> str_detect("^\\([:upper:]\\)$") ## returns
+
+
+## dcomma returns numbers and NA's
+v1 <- dcomma(v)
+
+## locations of NA's
+na_i <- is.na(v1)
+
+## Demonstration that the locations of the footnotes
+## are the same as the locations of the NA's
+
+length(v) == sum(na_i == fn_i)
+
+## update dcomma()
+## Integrate transformation of the values column and 
+## reporting the footnote values.
+
+
+dcomma <- function(c){
+  xnew = as.numeric(gsub(",", "", c))
+  fns = unique(c[is.na(xnew)])
+  vtran = list("new_vec" = xnew, "footnotes" = fns)
+  return(vtran)
+}
+
+ 
+v_trns <- dcomma(v)
+ 
+
+ a <- v_trns$new_vec
+ a[1:20]
+ 
+ v_trns$footnotes
+ 
+```
+
+## 4b. Survey Data Frame
+
+```{r}
+# distinct(strwb_survey[,3]) |> kable()
+# c4 <- distinct(strwb_survey[,4])
+# 
+# c6 <- distinct(strwb_survey[,6])
+# c7 <- distinct(strwb_survey[,7])
+c8 <- unique(strwb_survey[, 8])
+
+
+# c3 |> kable()
+# c4 |> kable()
+# 
+# c6 |> kable()
+# c7 |> kable()
+c8 |> kable()
+
+```
+
+```{r}
+strwb_survey <- strwb_survey |> 
+  separate_wider_delim(  cols = `Data.Item`,
+                         delim = ",",
+                         names = c("temp1",
+                                 "temp2",
+                                 "temp3",
+                                 "temp4"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+strwb_survey <- strwb_survey |>
+  separate_wider_delim(  cols = temp1,
+                         delim = " - ",
+                         names = c("temp1a",
+                                 "temp1b"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+```
+
+Domain
+
+```{r}
+strwb_survey <- strwb_survey |>
+  separate_wider_delim(  cols = Domain,
+                         delim = ",",
+                         names = c("temp22",
+                                 "temp23"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+
+
+t22 <- unique(strwb_survey$temp22)
+
+t23 <- unique(strwb_survey$temp23)
+
+```
+
+Domain Category
+
+```{r}
+strwb_survey <- strwb_survey |>
+  separate_wider_delim(  cols = `Domain.Category`,
+                         delim = ",",
+                         names = c("temp42",
+                                 "temp43",
+                                 "temp44",
+                                 "temp45"),
+                         too_many = "error",
+                         too_few = "align_start"
+                       )
+```
